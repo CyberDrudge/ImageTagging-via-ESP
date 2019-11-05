@@ -10,6 +10,7 @@ Create a virtual environment:
 Clone this repository:
 
 ```git clone <url>```
+
 ```cd ImageTagging-via-ESP```
 
 Install requirements:
@@ -25,6 +26,11 @@ Create Migrations:
 Load Questions and their Choices:
 
 `python manage.py loaddata questions/fixtures/questions.json `
+
+Create a superuser or Admin:
+
+`python manage.py createsuperuser`
+
 
 
 **Run Game**

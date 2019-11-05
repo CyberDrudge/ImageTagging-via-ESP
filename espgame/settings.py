@@ -55,6 +55,7 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'espgame.urls'
+LOGOUT_REDIRECT_URL = '/'
 
 TEMPLATES = [
     {

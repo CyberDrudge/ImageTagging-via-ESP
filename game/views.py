@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .utilities import check_submission
 from questions.forms import ChoiceForm
 from tasks.models import Task
@@ -10,12 +10,15 @@ def homepage(request):
 
 
 def thegame(request):
-    task, new = Task.objects.new_or_get(request)
-    template_name = 'tasks/task_view.html'
-    context = {
-        'task': task,
-    }
-    return render(request, template_name, context)
+    if request.user.is_authenticated:
+        task, new = Task.objects.new_or_get(request)
+        template_name = 'tasks/task_view.html'
+        context = {
+            'task': task,
+        }
+        return render(request, template_name, context)
+
+    return redirect('/login/')
 
 
 def action(request):

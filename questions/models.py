@@ -41,5 +41,5 @@ def check_consensus(*args, **kwargs):
         return sent_mail
 
 
-post_save.connect(check_consensus, sender=PrimaryImage)
+# post_save.connect(check_consensus, sender=PrimaryImage)
 
