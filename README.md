@@ -10,6 +10,7 @@ Create a virtual environment:
 Clone this repository:
 
 ```git clone <url>```
+
 ```cd ImageTagging-via-ESP```
 
 Install requirements:
