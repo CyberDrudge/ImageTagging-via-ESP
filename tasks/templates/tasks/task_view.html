@@ -3,11 +3,10 @@
 {% block content %}
     <h4 class="my-3">Select the most viable option(s) for each Question.</h4>
     <form method="POST" action="action"> {% csrf_token %}
-        <div class="container">
+        <div class="col">
             <input type="hidden" name="task" value="{{ task.id }}">
             {% for ques in task.questions.all %}
-                    <label>Q{{ forloop.counter }}. <img src="{{ ques.image.url }}" class="img-fluid"/></label><br/>
-                    <input type="hidden" name="questions" value="{{ ques.id }}">
+                    <div class="container">Q{{ forloop.counter }}. <img src="{{ ques.image.url }}" class="img-responsive"/></div><br/>
 
                     <div class="row">
                         {% for choice in ques.secondary_image.all %}
@@ -20,7 +19,8 @@
                             </div>
                         {% endfor %}
                     </div>
-                    <hr/>
+
+                    <br/><hr/>
             {% endfor %}
         </div>
 
