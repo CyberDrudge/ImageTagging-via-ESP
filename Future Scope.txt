@@ -5,6 +5,7 @@ Create User Profile.
 Add the feature to select the image itself rather that the checkbox.
 Mail confirmation, support password recovery via email.
 Implement feature to change password.
+Improve Login & Register Views.
 
 Note:
 

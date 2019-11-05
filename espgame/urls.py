@@ -25,11 +25,11 @@ from accounts.views import login_page, register_page
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', homepage, name='home'),
-    path('play', thegame, name='thegame'),
-    path('action', action, name='action'),
-    path('login', login_page, name='login'),
+    path('play/', thegame, name='thegame'),
+    path('action/', action, name='action'),
+    path('login/', login_page, name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
-    path('register', register_page, name='register'),
+    path('register/', register_page, name='register'),
 ]
 
 
