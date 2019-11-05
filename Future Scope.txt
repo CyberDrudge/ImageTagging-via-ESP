@@ -1,0 +1,13 @@
+Next steps in the development of this activity involves:
+
+Implement pagination to display only 1 question at a time.
+Create User Profile.
+Add the feature to select the image itself rather that the checkbox.
+Mail confirmation, support password recovery via email.
+Implement feature to change password.
+
+Note:
+
+System always try to reach consensus for 2 players. To do the same for n players, update the "CONSENSUS_NUMBER" variable in "settings.py".
+To include different components in questions, i.e. Audio, Text etc., Tasks can be prepared by randomly selecting a model for each question. For ex. randomly select Text to prepare one question and then  select Image for the next question and so on.
+System supports notifying the admin when consensus is reached for all questions. To enable this, please uncomment the code line #44 on "questions/models.py" and update email credentials in settings.py.
