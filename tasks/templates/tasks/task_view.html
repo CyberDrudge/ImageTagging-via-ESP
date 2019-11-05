@@ -6,14 +6,19 @@
         <div class="col">
             <input type="hidden" name="task" value="{{ task.id }}">
             {% for ques in task.questions.all %}
-                    <div class="container">Q{{ forloop.counter }}. <img src="{{ ques.image.url }}" class="img-responsive"/></div><br/>
+                    <div class="container my-2">
+                        Q{{ forloop.counter }}.
+                        {% if ques.image %}<img src="{{ ques.image.url }}" class="img-responsive"/>
+                        {% else %} Image Missing
+                        {% endif %}
+                    </div><br/><br/>
 
                     <div class="row">
                         {% for choice in ques.secondary_image.all %}
                             <div class="col-6">
                                 {{forloop.counter}}.<input type="checkbox" name="answers" value="{{ choice.id }}">
-                                {% if choice.image %}<img src="{{ choice.image.url }}" class="img-fluid"/>
-                                {% else %} {{ choice.slug }}
+                                {% if choice.image %}<img src="{{ choice.image.url }}" class="img-fluid" />
+                                {% else %} Image Missing
                                 {% endif %}
                                 <br/>
                             </div>
@@ -24,7 +29,7 @@
             {% endfor %}
         </div>
 
-        <button type="submit" class="btn btn-success">Submit</button>
+        <button type="submit" class="btn btn-success my-2">Submit</button><br/><br/>
     </form>
 
 {% endblock %}
