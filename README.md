@@ -1,8 +1,6 @@
 # ImageTagging-via-ESP
 An Image Tagging Game based on ESP
 
-###### **Setting Up ESP-Game**
-
 **Setup Build Environment**
 
 Create a virtual environment:
