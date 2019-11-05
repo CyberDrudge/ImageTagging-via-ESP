@@ -1,0 +1,37 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% include 'game/css.html' %}
+    <title>ESP</title>
+  </head>
+  <body>
+
+  {% include 'game/navbar.html' with brand_name='ESP' %}
+
+    <div class="container">
+
+      {% block content %}
+        <h1>Welcome to ESP ImageTagging Game!</h1><hr/>
+        <div class="container">
+          <div class="col-10"><h3>Play beyond Reality. Are you ready for this challenge?</h3>
+
+            <button type="button" class="btn btn-link" data-toggle="modal" data-target="#exampleModal">
+              How to Play?
+            </button>
+          </div><br/>
+          <a href="play" class="btn btn-primary mx-3 my-3"> Play </a>
+        </div>
+            <!-- Modal -->
+          {% include 'game/instructions_modal.html' %}
+      {% endblock %}
+    </div>
+
+    <!-- Optional JavaScript -->
+    {% include 'game/js.html' %}
+
+  </body>
+</html>
