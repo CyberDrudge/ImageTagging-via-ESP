@@ -2,7 +2,7 @@
 
 {% block content %}
     <h4 class="my-3">Select the most viable option(s) for each Question.</h4>
-    <form method="POST" action="action"> {% csrf_token %}
+    <form method="POST" action="/action/"> {% csrf_token %}
         <div class="col">
             <input type="hidden" name="task" value="{{ task.id }}">
             {% for ques in task.questions.all %}
