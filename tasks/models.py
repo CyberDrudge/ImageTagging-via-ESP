@@ -2,7 +2,7 @@ from django.db import models
 from questions.models import PrimaryImage
 from django.contrib.auth.models import User
 from random import sample
-
+from accounts.models import Player
 task_size = 5
 
 
@@ -10,6 +10,13 @@ task_size = 5
 class TaskManager(models.Manager):
     def new_or_get(self, request):
         user = request.user
+        player, new = Player.objects.new_or_get(user)
+        try:
+            if player.current_task:
+                qs = self.get_queryset().get(id=player.current_task)
+                return qs, False
+        except:
+            pass
         qs = self.get_queryset().filter(is_active=True).exclude(user=user)
         new_obj = False
         if qs.count() >= 1:
@@ -22,6 +29,9 @@ class TaskManager(models.Manager):
             questions = list(PrimaryImage.objects.all().values_list('id', flat=True))
             ques = sample(questions, task_size)
             task_obj.questions.set(ques)
+        # print(player)
+        player.current_task = task_obj.id
+        player.save()
         return task_obj, new_obj
 
 

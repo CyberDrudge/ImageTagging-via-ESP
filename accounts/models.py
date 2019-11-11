@@ -11,13 +11,14 @@ class PlayerManager(models.Manager):
             player_obj = qs.first()
         else:
             new_obj = True
-            player_obj = Player.objects.create(user=user)
+            player_obj = Player.objects.create(user=user, current_task=None)
         return player_obj, new_obj
 
 
 class Player(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     score = models.PositiveIntegerField(default=0)
+    current_task = models.PositiveIntegerField(null=True)
 
     objects = PlayerManager()
 
