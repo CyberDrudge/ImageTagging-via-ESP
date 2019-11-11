@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
+from .models import Player
 
 
 User = get_user_model()
@@ -29,3 +30,9 @@ class RegisterForm(forms.Form):
         if password != password2:
             raise forms.ValidationError("Passwords doesnt match")
         return data
+
+
+class UpdateProfileForm(forms.ModelForm):
+    class Meta:
+        model = Player
+        fields = ['user', 'score', 'current_task']

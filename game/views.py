@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .utilities import check_submission
 from questions.forms import ChoiceForm
 from tasks.models import Task
+from accounts.models import Player
 
 
 # Create your views here.
@@ -46,5 +47,8 @@ def action(request):
                 break
         else:
             raise Exception("Please Select a viable option.")
+    player, new = Player.objects.new_or_get(request.user)
+    player.current_task = None
+    player.save()
     check_submission(request, curr_task)
     return render(request, 'tasks/task_completed.html', {})

@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import authenticate, login, get_user_model
-
-from .forms import LoginForm, RegisterForm
-
+from django.views.generic import DetailView, UpdateView
+from .forms import LoginForm, RegisterForm, UpdateProfileForm
+from .models import Player
 
 User = get_user_model()
 
@@ -39,3 +39,25 @@ def register_page(request):
         )
         return redirect('/')
     return render(request, "accounts/register.html", context)
+
+
+class AccountHomeView(DetailView):
+    template_name = 'accounts/home.html'
+
+    def get_object(self):
+        user = self.request.user
+        qs, new = Player.objects.new_or_get(user=user)
+        return qs
+
+
+class ProfileView(UpdateView):
+    template_name = 'accounts/profile.html'
+    form_class = UpdateProfileForm
+
+    def get_object(self):
+        user = self.request.user
+        qs, new = Player.objects.new_or_get(user=user)
+        return qs
+
+    def get_success_url(self):
+        return reverse("account:home")
