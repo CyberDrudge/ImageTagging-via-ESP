@@ -1,4 +1,10 @@
-<form method="POST"> {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-default">Submit</button>
-</form>
+{% extends 'game/base.html' %}
+
+{% block content %}
+
+    <form method="POST" class="my-3"> {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+
+{% endblock %}
